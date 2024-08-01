@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif !important;
+  color: #5C5470;
+}
+
+.container {
+  background-color: #FFE9D0;
+}
+.container .content .vr {
+  background-color: #17153B;
+}
+.container .content .content-list {
+  height: auto;
+  overflow-x: auto;
+}
+.container .content .content-list select {
+  background-color: #FFE9D0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.container .content .content-list select::-webkit-scrollbar {
+  display: none;
+}
+.container .content .content-list select:focus {
+  outline: none;
+}
+.container .content .content-list select option {
+  width: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
