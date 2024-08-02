@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addItem, deleteItem } from "./reducer/index.js";
+import { addItem } from "./reducer/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import JobItem from "./item/index.jsx";
 import "./assets/style/style.css";
@@ -13,39 +13,33 @@ function App() {
 
   const handleAddJob = (e) => {
     e.preventDefault();
+    if (job.trim() == "") {
+      alert("CẬU MUỐN NÓI GÌ ?!");
+      return;
+    }
     dispatch(addItem(job));
+    setJob("");
   };
-
-  // const handleRemoveJob = (id) => {
-  //   dispatch(deleteItem(id));
-  // };
 
   return (
     <React.Fragment>
-      <div className="container border border-3 border-secondary-subtle rounded-3 d-flex flex-column align-items-center py-2 my-5">
-        <div className="header px-2 mx-2">
+      <div className="container border border-3 border-secondary-subtle rounded-3 d-flex flex-column align-items-center py-2">
+        <div className="header text-center px-2 mx-2">
           <h1>TODO LIST</h1>
         </div>
-        <div className="content row w-100 px-2 mx-2 my-2 ">
-          <div className="content-list col-8 px-2 mx-2 my-2">
-            <select
-              className="border-0 p-2"
-              name="content-list"
+        <div className="content justify-content-center row w-100 px-2 mx-2 my-2 ">
+          <div className="content-list d-flex flex-row flex-wrap justify-content-center col-8 px-2 mx-2 my-2">
+            <div
+              className="d-flex flex-row flex-wrap justify-content-around align-items-start border-0 p-2"
               id="list-job"
-              multiple
-              size={(dataFromStorage.length || todoList.length) + 1}
             >
-              {dataFromStorage.length
-                ? (dataFromStorage.forEach((value) => (
-                    <JobItem key={value} content={localStorage.value} />
-                  )))
-                : todoList.map((item) => (
-                    <JobItem key={item.id} content={item.content} />
-                  ))}
-            </select>
+              {dataFromStorage.map((value) => (
+                <JobItem key={value.id} id={value.id} content={value.content} />
+              ))}
+            </div>
           </div>
           <div className="vr p-0"></div>
-          <div className="content-action col">
+          <div className="content-action col d-flex flex-column align-items-center my-2">
             <form
               className="content__add-job d-flex flex-column"
               onSubmit={handleAddJob}
@@ -59,6 +53,7 @@ function App() {
                 </span>
                 <input
                   type="text"
+                  value={job}
                   onInput={(e) => {
                     setJob(e.target.value);
                   }}
@@ -69,13 +64,10 @@ function App() {
               </div>
               <div className="button-group d-flex flex-row justify-content-around m-2">
                 <button
-                  className="btn btn-primary btn-md w-50 m-2"
+                  className="button__add-job btn btn-primary btn-md w-50 m-2"
                   type="submit"
                 >
-                  Add Note
-                </button>
-                <button className="btn btn-danger btn-md text-warning w-50 m-2">
-                  Delete Note
+                  LÊN TIẾNG
                 </button>
               </div>
             </form>

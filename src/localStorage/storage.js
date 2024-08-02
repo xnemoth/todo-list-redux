@@ -1,5 +1,10 @@
 function getData() {
-    return Object.keys(localStorage);
+    try {
+        const storageData = JSON.parse(localStorage.note);
+        return storageData;
+    } catch (error) {
+        return [];
+    }
 }
 
 export default getData

@@ -6,30 +6,49 @@
   color: #5C5470;
 }
 
+#root {
+  min-height: 100vh;
+  margin: 4.5rem 0.5rem;
+}
+
+.focusable:focus {
+  background-color: #B1AFFF !important;
+}
+
 .container {
   background-color: #FFE9D0;
+  min-height: 100vh;
 }
 .container .content .vr {
   background-color: #17153B;
+  min-height: 100vh;
+}
+@media (max-width: 768px) {
+  .container .content .vr {
+    display: none;
+  }
 }
 .container .content .content-list {
   height: auto;
   overflow-x: auto;
 }
-.container .content .content-list select {
-  background-color: #FFE9D0;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@media (max-width: 768px) {
+  .container .content .content-list {
+    width: 100%;
+  }
 }
-.container .content .content-list select::-webkit-scrollbar {
-  display: none;
+.container .content .content-list .job {
+  background-color: #BBE9FF;
 }
-.container .content .content-list select:focus {
-  outline: none;
+@media (max-width: 375px) {
+  .container .content .content-list .job .job-content__title {
+    display: none;
+  }
 }
-.container .content .content-list select option {
-  width: auto;
+@media (max-width: 375px) {
+  .container .content .content-action .content__add-job .button-group .button__add-job {
+    width: 100% !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,40 +5,81 @@
   padding: 0;
   box-sizing: border-box;
   font-family: $font !important;
-  color: $font-main-color ;
+  color: $font-main-color;
+}
+
+#root {
+  min-height: 100vh;
+  margin: 4.5rem 0.5rem;
 }
 
 @mixin hideScrollBar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+.focusable {
+  &:focus {
+    background-color: $main-secondary-color !important;
+  }
 }
 
 .container {
-    background-color: $main-background-color;
+  background-color: $main-background-color;
+  min-height: 100vh;
 
   & .content {
     & .vr {
-        background-color: $main-dark;
+      background-color: $main-dark;
+      min-height: 100vh;
+
+      @include medium {
+        display: none;
+      }
     }
 
     & .content-list {
-        height: auto;
-        overflow-x: auto;
+      height: auto;
+      overflow-x: auto;
 
-      & select {
-        background-color: $main-background-color;
-        overflow-y: scroll;
-        @include hideScrollBar;
+      @include medium {
+        width: 100%;
+      }
 
-        &:focus {
-          outline: none;
+      & .job {
+        background-color: $main-primary-color;
+
+        & .job-content__title {
+          @include small {
+            display: none;
+          }
         }
+      }
+    }
 
-        & option {
-          width: auto;
+    & .content-action {
+      & .content__add-job {
+        & .button-group { 
+          & .button__add-job {
+            @include small {
+              width: 100% !important;
+            }
+          }
         }
       }
     }
