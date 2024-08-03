@@ -9,7 +9,6 @@ function App() {
   const [job, setJob] = useState("");
   const todoList = useSelector((state) => state.todoList.list);
   const dispatch = useDispatch();
-  const dataFromStorage = getData();
 
   const handleAddJob = (e) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ function App() {
               className="d-flex flex-row flex-wrap justify-content-around align-items-start border-0 p-2"
               id="list-job"
             >
-              {dataFromStorage.map((value) => (
+              {getData().map((value) => (
                 <JobItem key={value.id} id={value.id} content={value.content} />
               ))}
             </div>

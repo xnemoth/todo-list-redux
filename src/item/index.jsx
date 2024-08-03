@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 function JobItem(jobProps) {
   let time = new Date(jobProps.id);
-  let weekDay = [
+  const weekDay = [
     "Thứ Hai",
     "Thứ Ba",
     "Thứ Tư",

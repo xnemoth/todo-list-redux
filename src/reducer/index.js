@@ -3,7 +3,6 @@ import getData from "../localStorage/storage.js";
 
 const initialState = {
   list: [],
-  listCount: 0,
 };
 
 const updateStorage = (jobUpdate, type) => {
@@ -34,7 +33,6 @@ const itemSlice = createSlice({
         id: Date.now(),
         content: action.payload,
       };
-      state.listCount += 1;
       updateStorage(item, "add");
       state.list.push(item);
     },
